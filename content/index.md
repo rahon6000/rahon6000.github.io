@@ -7,6 +7,6 @@ title: 옵시디언 노트
 
 Other notes
 - [[Quartz]]
-- [[자료구조 & 알고리즘|Algorithm]]
+- [[CS roadmap]]
 - [[Technologies Overview]]
 - 
