@@ -8,5 +8,9 @@ title: 옵시디언 노트
 Other notes
 - [[Quartz]]
 - [[CS roadmap]]
-- [[Technologies Overview]]
+- [[Technologies/index]]
+- 
+
+Websites
+- [CS roadmap](https://roadmap.sh/computer-science)
 - 

@@ -19,3 +19,9 @@ Quartz 사용법
 	- rss feed 는 `host/index.xml` 기본값으로 확인 가능. 아무 설정 없으면 link 가 `https://quartz.jzhao.xyz` 를 baseurl 로 가지니, config 파일을 수정해야 한다.
 
 Jekyell 하고 비슷한데, 옵시디언을 잘 지원하는 것 같아서 좋은 느낌임.
+
+
+# Todo
+
+- [ ] 타이틀 수정
+- [ ] 랜덤 페이지 기능
