@@ -8,7 +8,7 @@ title: 옵시디언 노트
 Other notes
 - [[Quartz]]
 - [[CS roadmap]]
-- [[Technologies/index]]
+- [[Technologies/index|Tech]]
 - 
 
 Websites
