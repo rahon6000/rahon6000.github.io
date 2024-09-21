@@ -15,6 +15,10 @@
 
 - 체력, 데미지 입음
 - 근접 공격
+	- [ ] 적 hurt state
+	- [ ] 공격 스프라이트, FX
+	- [ ] combatManager
+- [ ] State machine 으로 관리하기
 - 투사체
 - 공중 제어
 	- [x] N단 점프
