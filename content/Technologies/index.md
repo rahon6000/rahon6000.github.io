@@ -21,6 +21,78 @@ title: 테크 오버뷰
 
 추가로 [공식문서](https://git-scm.com/book/ko/v2)가 꽤 괜찮다. 
 
+자주사용하는 명령어는 git help everyday 에서 볼 수 있다.
+
+[여기](https://www.codingmax.net/courses/git-commands/section01/lec0013) 도 괜찮다. 
+
+### 자주 사용하는 명령어 (CLI 프레임워크가 alias 만들어주니 참고)
+**머지 관련...**
+- 머지 취소 : git revert -m 1 {merge_commit}
+- 머지 중단 : git merge --abort
+- 머지 계속 : git merge --continue
+	- 얘는 conflict 를 수정한 후 사용한다.
+- 머지 커밋 : git merge --no-ff
+	- 기본 옵션을 쓰면 fast-foward 될 수도 있는데, 이러면 머지가 아니라 일반커밋처럼 보일 수 있다. 취향이나 상황에 따라 선택.
+- 
+
+**브랜치 관련..**
+- 브랜치 보기 : git branch -> 단독으론 쓸 일 없을 것. CLI 프레임워크나 IDE 에서 잘 보여줌.
+	- 리모트까지 전부 보기 : git branch -a -> cli 에선 이게 쓸 일 있을지도.
+	- 
+
+### 관리하는 공간들 (index, working tree, staged, stash)
+
+
+### reset, revert, restore 차이
+
+- revert : 역 커밋을 새로 만든다.
+- restore : index or commit 을 기준으로 working tree 의 파일들을 되돌린다. 커밋을 새로 하거나 없애지 않음.
+- reset : index 를 working tree 로 되돌린다.
+	- git add 를 되돌리고 싶을 때. 
+	- git commit 을 되돌리고 싶을 때. git reset --soft HEAD\^
+	- git merge, git pull 을 되돌리고 싶을 때
+
+### upstream 이란
+
+git branch 에선 자신이 나온 상류 remote branch 를 명시하는데 등장한다.
+git branch --set-upstream-to=origin/remote local
+
+git branch -vv 로 로컬 브랜치가 어떤 리모트에서 파생되었는지 볼 수 있다.
+
+새로 브랜치를 만든 경우 upstream 설정해 두면 이후 push pull 시 리모트 지정할 필요가 없어짐.
+
+
+### 로컬 과 리모트가 다른 경우
+
+당연히 push pull 시 conflict 가 발생할 수 있다. 가장 좋은 건 작업 전 로컬을 업데이트 하는 습관을 들이는 것.
+
+근데 동시 작업중이라 conflict 나는 건 어쩔 수 없음.
+
+conflict 가장 단순한 해결법은 merge 하는 것임. 커밋이 한개라면 fast foward 해서 정리하면 좋다.
+
+merge 하지 말고 그냥 내 커밋을 리모트 커밋 이후에 붙이고 싶을 수 있다. 이 때 rebase 해 준다. (git pull -r)
+
+### merge 와 rebase
+
+merge 는 (fast foward 가 아니면) 머지 커밋을 생성하고, rebase 는 일직선으로 된 커밋으로 정리해 준다.
+
+merge 는 커밋들이 보존된 채로 병합만 한다. 보수적이라고 보면 좋다.
+
+rebase 는 커밋 순서같은게 바뀔수도 있고, 여러 커밋을 합칠수도 있다. push 된 커밋에 대해선 실행하면 안좋다. 대신 브랜치들이 깔끔하게 정리된다.
+
+추가로 주의할 점은 working tree 가 더러운 경우 merge 는 일단 진행되고 나중에 conflict 만 정리하면 되지만 rebase 는 정리하라고 경고한다는 점이다. 
+
+불편하면 git pull -r --autostash 혹은 git fetch 를 쓰자.
+
+### pull 과 fetch
+
+pull 은 working tree 까지 수정된다.
+
+fetch 는 변경점을 체크하기만 한다.
+
+fetch 로 가져온 커밋들은 FETCH_HEAD 에 보관된다. 따라서 git fetch 이후 git merge FETCH_HEAD 를 해주면 git pull 과 동일하다.
+
+
 ### Merge 를 두 번 할수는 없다.
 
 Merge - Revert - Merge 하려다 두 번째 Merge 가 안되서 알게된 내용. Merge 와 일반 커밋은 근본적으로 다르기 때문에 처음에 이해를 못했다.
