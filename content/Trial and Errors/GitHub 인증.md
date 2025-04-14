@@ -29,6 +29,8 @@ Host github-another github.com
 
 ```
 git remote set-url github-another:organization/repository.git
+
+// 원래는 https://github.com/organization/repository.git 으로 되어있는 걸 수정
 ```
 
 깃허브에서 클론 주소를 따올 때도 보이지만 위 형식만 맞춰주면 된다. 따로 ssh config 의 alias 를 사용하지 않으면 기본적으론 `git@github.com:org/rep.git` 형식인데, ssh config 의 alias 를 사용해주면 자연스럽게 설정해 둔 키와 유저 (`git@`) 사용하게 된다. 
